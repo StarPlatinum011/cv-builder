@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useState } from 'react'
 import '../styles/index.css'
-import { func } from 'prop-types'
 
 export default function Education(
     {
