@@ -2,8 +2,8 @@ import uniqid from 'uniqid'
 
   function generateDefaultCV() {
 	const personalDetails = {
-		fullName: "John Smith",
-		email: "john.smith@email.com",
+		fullName: "Olivia Rodrigo",
+		email: "olivia.rodrigo@email.com",
 		contact: "(123) 456-7890",
 		address: "123 Main Street, Cityville, State 12345",
 	};
@@ -12,19 +12,19 @@ import uniqid from 'uniqid'
 		{
 			id: uniqid(),
 			institution: "University of Citytown",
-			degree: "Bachelor of Science in Computer Science",
+			degree: "BSc. in Computing",
 			startDate: "September 2015",
 			endDate: "May 2019",
 			grade: '4.0 GPA'
 		},
-		// {
-		// 	id: uniqid(),
-		// 	institution: "Cityville High School",
-		// 	degree: "High School Diploma",
-		// 	startDate: "September 2011",
-		// 	endDate: "June 2015",
-		// 	grade: '3.6 GPA'
-		// },
+		{
+			id: uniqid(),
+			institution: "Cityville High School",
+			degree: "High School Diploma",
+			startDate: "September 2011",
+			endDate: "June 2015",
+			grade: '3.6 GPA'
+		},
 	];
 
 	const experience = [
@@ -59,6 +59,7 @@ import uniqid from 'uniqid'
             id: uniqid(),
             skillName: "REACT Framework"
         },
+		
         {
             id: uniqid(),
             skillName: "Web Developer"

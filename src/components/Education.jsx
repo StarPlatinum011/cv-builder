@@ -1,70 +1,118 @@
 /* eslint-disable react/prop-types */
+import { useState } from 'react'
 import '../styles/index.css'
+import { func } from 'prop-types'
 
 export default function Education(
-    {institution,
+    {
+    id,
+    editID,
+    changeEduEditID,
+    institution,
     startDate,
     endDate,
     degree,
     grade,
-    changeEducation}
+    changeEducation,
+    deleteEducation}
 ){
-    return(
+
+    const [isEditable, setEditable] = useState(true)
+
+    function handleEdit() {
+        setEditable(true);
+        changeEduEditID(id);
+    }
+
+    function handleDelete() {
+        deleteEducation(id);
+        changeEduEditID(null);
+
+    }
+
+    function eduSubmit(e) {
+        e.preventDefault();
+        setEditable(false);
+        changeEduEditID(null);
+    }
+
+
+    return isEditable && id===editID ? (
         <>
-            <div className='sub-container-header'>
-                <h2>Education</h2>
-                <button>...</button>
-            </div>
+        <form key={id} onSubmit={eduSubmit}>
             <div className='sub-container'>
                 <label>Institution: </label>
                 <input
+                    id='institution'
                     name="institution"
                     defaultValue={institution}
                     type="text"
                     onChange={changeEducation}
+                    data-key = {id}
+                    required
                 />
-                        </div>
-                        <div className='sub-container'>
-                        <label>Start Date: </label>
+            </div>
+            <div className='sub-container'>
+            <label>Start Date: </label>
                 <input
+                    id='startDate'
                     name="startDate"
                     defaultValue={startDate}
                     type="text"
                     onChange={changeEducation}
+                    data-key = {id}
+                    required
                 />
-                        </div>
+            </div>
 
-                        <div className='sub-container'>
-                        <label>End Date: </label>
+            <div className='sub-container'>
+            <label>End Date: </label>
                 <input
+                    id='endDate'
                     name="endDate"
                     defaultValue={endDate}
                     type="text"
                     onChange={changeEducation}
+                    data-key = {id}
+                    required
                 />
-                        </div>
+            </div>
 
-                        <div className='sub-container'>
-                        <label>Degree: </label>
+            <div className='sub-container'>
+            <label>Degree: </label>
                 <input
+                    id='degree'
                     name="degree"
                     defaultValue={degree}
                     type="text"
                     onChange={changeEducation}
+                    data-key = {id}
+                    required
                 />
-                        </div>
+            </div>
 
-                        <div className='sub-container'>
-                        <label>Grade: </label>
+            <div className='sub-container'>
+            <label>Grade: </label>
                 <input
+                    id='grade'
                     name="grade"
                     defaultValue={grade}
                     type="text"
                     onChange={changeEducation}
+                    data-key = {id}
+                    required
                 />
 
-                <button>Add</button>
-            </div>        
+            </div>   
+            <button className='iso-btn' type='submit'>SAVE</button>
+
+            </form>     
         </>
+    ): (
+        <div className='display-contents'>
+            <p>{institution}</p>
+            <button onClick={handleEdit}>EDIT</button>
+            <button onClick={handleDelete}>DELETE</button>
+        </div>
     )
 }

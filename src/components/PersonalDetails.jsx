@@ -2,6 +2,8 @@
 import { useState } from "react"
 import '../styles/index.css'
 
+
+
 function PersonalDetails({
     fullName,
     contact,
@@ -11,24 +13,21 @@ function PersonalDetails({
     handleDelete}
     ) {
 
-    const [editMode, setEditMode] = useState(true)
+    const [editMode, setEditMode] = useState(false)
 
-    function isSubmit(e) {
+    const isSubmit = (e) => {
         e.preventDefault();
         setEditMode(false)
     }
     // eslint-disable-next-line no-unused-vars
-    function handleEdit(e) {
+    const handleEdit = (e) => {
+        e.preventDefault()
         setEditMode(true);
     }
 
     //pass the editmode condition 
     return editMode? ( 
-        <form onSubmit={isSubmit}>
-            <div className='sub-container-header'>
-                <h2>Personal Informations</h2>
-                <button>...</button>
-            </div>
+        <form onSubmit={isSubmit}>            
             <div className='sub-container'>
                 <label>Full Name: </label>
                 <input
@@ -75,19 +74,19 @@ function PersonalDetails({
                     required
                     onChange={handleChange}
                 /> 
-                <button>Add</button>
+                <button className="iso-btn">Add</button>
 
             </div>
         </form> 
 
     ): (
-        <div className="displayContents">
+        <div className="display-contents">
             <p>{fullName}</p>
             <p>{contact}</p>
             <p>{address}</p>
             <p>{email}</p>
-            <button onClick={handleEdit}></button>
-            <button onClick={handleDelete}></button>
+            <button id="edit-btn" onClick={handleEdit}> EDIT</button>
+            <button id='delete-btn' onClick={handleDelete}>DELETE</button>
         </div>
         
     )
